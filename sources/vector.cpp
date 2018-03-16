@@ -105,7 +105,18 @@ void vector_t::pop_back()
 	}
 	else {
 		if (size_ * 4 == capacity_) {
+			int * mas;
+			mas = new int[capacity_];
+			for (size_t i = 0; i < size_; i++) {
+				mas[i] = elements_[i];
+			}
+			delete[] elements_;
 			capacity_ = capacity_ / 2;
+			elements_ = new int[capacity_];
+			for (size_t i = 0; i < size_; i++) {
+				elements_[i] = mas[i];
+			}
+			delete[] mas;
 		}
 	}
 }
