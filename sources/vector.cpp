@@ -22,12 +22,14 @@ vector_t::vector_t(vector_t const & other)
 
 vector_t & vector_t::operator =(vector_t const & other)
 {
-	delete[] elements_;
-	size_ = other.size_;
-	capacity_ = other.capacity_;
-	elements_ = new int[capacity_];
-	for (size_t i = 0; i < size_; i++) {
-		elements_[i] = other.elements_[i];
+	if(this != &other){
+		delete[] elements_;
+		size_ = other.size_;
+		capacity_ = other.capacity_;
+		elements_ = new int[capacity_];
+		for (size_t i = 0; i < size_; i++) {
+			elements_[i] = other.elements_[i];
+		}
 	}
 	return *this;
 }
@@ -79,19 +81,15 @@ void vector_t::push_back(int value)
 	}
 	else {
 		int * mas;
+		if (capacity_ == size_) {
+			capacity_ = 2 * capacity_;
+		}
 		mas = new int[capacity_];
 		for (size_t i = 0; i < size_; i++) {
 			mas[i] = elements_[i];
 		}
 		delete[] elements_;
-		if (capacity_ == size_) {
-			capacity_ = 2 * capacity_;
-		}
-		elements_ = new int[capacity_];
-		for (size_t i = 0; i < size_; i++) {
-			elements_[i] = mas[i];
-		}
-		delete[] mas;
+		elements_ = mas;
 		elements_[size_] = value;
 		size_++;
 	}
