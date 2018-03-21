@@ -108,7 +108,7 @@ public:
 	}
 	bool at(std::size_t index)
 	{
-		bool success = true
+		bool success = true;
 		try{
 			this[index];
 		}
