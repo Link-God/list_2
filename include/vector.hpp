@@ -58,15 +58,15 @@ public:
 		if (capacity_ == 0) {
 		size_ = 1;
 		capacity_ = 1;
-		elements_ = new int [capacity_];
+		elements_ = new T [capacity_];
 		elements_[0] = value;
 		}
 		else {
-			int * mas;
+			T * mas;
 			if (capacity_ == size_) {
 				capacity_ = 2 * capacity_;
 			}
-			mas = new int[capacity_];
+			mas = new T[capacity_];
 			for (size_t i = 0; i < size_; i++) {
 				mas[i] = elements_[i];
 			}
@@ -81,9 +81,9 @@ public:
 		if (size_ == 0) return;
 		size_--;
 		if (size_ ==0 || size_ * 4 == capacity_) {
-			int * mas;
+			T * mas;
 			capacity_ = capacity_ / 2;
-			mas = new int[capacity_];
+			mas = new T[capacity_];
 			for (size_t i = 0; i < size_; i++) {
 				mas[i] = elements_[i];
 			}
