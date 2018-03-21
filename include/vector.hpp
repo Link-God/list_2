@@ -110,7 +110,7 @@ public:
 	{
 		bool success = true;
 		try{
-			this[index];
+			(*this)[index];
 		}
 		catch(std::out_of_range){
 			success = false ;
