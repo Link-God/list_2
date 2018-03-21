@@ -117,3 +117,21 @@ TEST_CASE("poping elements")
 	REQUIRE( vector.size() == 0 );
 	REQUIRE( vector.capacity() == 1 );
 }
+TEST_CASE("Range_true")
+{
+	vector_t<int> vector ;
+	vector.push_back(2);
+	REQUIRE( vector.at(0) == true)
+}
+TEST_CASE("Range_false")
+{
+	vector_t<int> vector ;
+	vector.push_back(2);
+	REQUIRE( vector.at(1) == false)
+}
+TEST_CASE("Other_type")
+{
+	vector_t<double> vector ;
+	vector.push_back(2.1);
+	REQUIRE( vector[0] == 2.1)
+}
