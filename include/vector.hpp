@@ -95,18 +95,18 @@ public:
 	T & operator [](std::size_t index)
 	{
 		if(index >= size_){
-			throw std::out_of_range("Invalid range") 
+			throw std::out_of_range("Invalid range") ;
 		}
 		return elements_[index];
 	}
 	T operator [](std::size_t index) const
 	{
 		if(index >= size_){
-			throw std::out_of_range("Invalid range") 
+			throw std::out_of_range("Invalid range") ;
 		}
 		return elements_[index];
 	}
-	boop at(std::size_t index)
+	bool at(std::size_t index)
 	{
 		bool success = true
 		try{
