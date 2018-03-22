@@ -94,28 +94,20 @@ public:
 
 	T & operator [](std::size_t index)
 	{
-		if(index >= size_){
-			throw std::out_of_range("Invalid range") ;
-		}
 		return elements_[index];
 	}
 	T operator [](std::size_t index) const
 	{
-		if(index >= size_){
-			throw std::out_of_range("Invalid range") ;
-		}
 		return elements_[index];
 	}
-	bool at(std::size_t index)
+	void at(std::size_t index)
 	{
-		bool success = true;
-		try{
+		if(index < size_){
 			(*this)[index];
 		}
-		catch(std::out_of_range){
-			success = false ;
+		else{
+			throw std::out_of_range("Invalid range") ;
 		}
-		return success ;
 	}
 
 	bool operator ==(vector_t<T> const & other) const
