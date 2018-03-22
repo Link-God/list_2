@@ -117,17 +117,17 @@ TEST_CASE("poping elements")
 	REQUIRE( vector.size() == 0 );
 	REQUIRE( vector.capacity() == 1 );
 }
-TEST_CASE("Range_true")
+TEST_CASE("Range_good")
 {
 	vector_t<int> vector ;
 	vector.push_back(2);
-	REQUIRE( vector.at(0) == true);
+	REQUIRE_NOTHROW ( vector.at(0));
 }
-TEST_CASE("Range_false")
+TEST_CASE("Range_bad")
 {
 	vector_t<int> vector ;
 	vector.push_back(2);
-	REQUIRE( vector.at(1) == false);
+	REQUIRE_THROWS_AS( vector.at(1) , std::out_of_range);
 }
 TEST_CASE("Other_type")
 {
