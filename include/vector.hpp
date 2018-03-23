@@ -100,10 +100,19 @@ public:
 	{
 		return elements_[index];
 	}
-	void at(std::size_t index)
+	T at(std::size_t index)
 	{
 		if(index < size_){
-			(*this)[index];
+			retutn (*this)[index];
+		}
+		else{
+			throw std::out_of_range("Invalid range") ;
+		}
+	}
+	T & at(std::size_t index) const
+	{
+		if(index < size_){
+			retutn (*this)[index];
 		}
 		else{
 			throw std::out_of_range("Invalid range") ;
