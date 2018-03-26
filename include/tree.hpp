@@ -43,7 +43,8 @@ public:
 						time = time->right;
 					}
 					else {
-						time = node;
+						time->right = node;
+						return;
 					}
 				}
 				else{
@@ -51,7 +52,8 @@ public:
 						time = time->left;
 					}
 					else {
-						time = node;
+						time->left = node;
+						return;
 					}
 
 				}
