@@ -1,6 +1,5 @@
 #include <catch.hpp>
 #include <sstream>
-
 #include "tree.hpp"
 
 TEST_CASE("creating tree")
@@ -9,17 +8,12 @@ TEST_CASE("creating tree")
 	REQUIRE( tree.root() == nullptr );
 }
 
-TEST_CASE("conlose")
-{	
-	int i = 0;
 	// необходимый код для выполнение консольных команд 
 	//
 	//	tree_t tree;
 	//	std::ostringstream ostream;
 	//	Operator(ostream , tree );
 	//
-	REQUIRE( i == 0 );
-}
 
 TEST_CASE("insert_and_print") {
 	tree_t  tree;
