@@ -32,7 +32,7 @@ TEST_CASE("insert_and_print") {
 	};
 	std::ostringstream ostream;
 	tree.print(ostream , tree.root());
-	REQUIRE(stream.str() == out);
+	REQUIRE(ostream.str() == out);
 }
 
 TEST_CASE("find")
