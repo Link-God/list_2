@@ -1,16 +1,28 @@
 #include <catch.hpp>
 #include <sstream>
+
 #include "tree.hpp"
 
-TEST_CASE("creating tree")
+TEST_CASE("creating_tree")
 {
 	tree_t tree;
 	REQUIRE( tree.root() == nullptr );
 }
 
+// необходимый код для выполнение консольных команд 
+//
+//int main()
+//{
+//  tree_t tree;
+//  std::ostringstream ostream;
+//  Operator(ostream , tree );
+//  std ::cin.get();
+//  return 0;
+//}
+
 TEST_CASE("insert_and_print") 
 {
-	tree_t  tree;
+	tree_t tree;
 	tree.insert(2);
 	tree.insert(1);
 	tree.insert(3);
