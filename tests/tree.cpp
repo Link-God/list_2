@@ -28,9 +28,9 @@ TEST_CASE("insert_and_print")
 	tree.insert(3);
 	
 	std::string out {
-		"----4\n"
+		"----3\n"
 		"--2\n"
-		"----2\n"
+		"----1\n"
 	};
 	std::ostringstream ostream;
 	tree.print(ostream , tree.root());
