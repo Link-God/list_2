@@ -67,31 +67,21 @@ public:
 	}
 	bool find(int value) const
 	{
-		if (root_->value == value) {
-			return true;
-		}
-		else {
-			node_t * time = root_;
-			while (time != nullptr){
+		node_t * time = root_;
+		while (time != nullptr){
+			if (value == time->value) {
+				return true;
+			}
+			else {
 				if (value >= time->value) {
-					if (time->right != nullptr && time->right->value!=value) {
-						time = time->right;
-					}
-					else {
-						return true;
-					}
+					time = time->right;
 				}
 				else {
-					if (time->left != nullptr && time->left->value != value) {
-						time = time->left;
-					}
-					else {
-						return true;
-					}
+					time = time->left;
 				}
 			}
-			return false;
 		}
+		return false;
 	}
 	
 	node_t * root()
