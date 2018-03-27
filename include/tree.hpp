@@ -135,7 +135,7 @@ bool read(char & op, int & value , bool & fail)
 	return false;
 
 }
-void Operator(std ::ostream &stream , tree_t & tree)
+void Operator(std ::ostringstream &stream , tree_t & tree)
 {
 	
 	char op;
@@ -144,7 +144,7 @@ void Operator(std ::ostream &stream , tree_t & tree)
 	while (read(op, value, fail)) {
 		if (op == '=') {
 			tree.print(stream, tree.root(), 1);
-			//std::cout << stream.str();
+			std::cout << stream.str();
 		}
 		else {
 			if (op == '+') tree.insert(value);
