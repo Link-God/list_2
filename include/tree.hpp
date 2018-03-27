@@ -96,7 +96,7 @@ public:
 	{
 		return  root_;
 	}
-	void print(std::ostream & stream ,  node_t * node , size_t i) const
+	void print(std::ostream & stream ,  node_t * node , size_t i = 1) const
 	{
 		if (node->right) {
 			i++;
