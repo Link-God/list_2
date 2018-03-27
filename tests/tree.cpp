@@ -10,13 +10,15 @@ TEST_CASE("creating tree")
 }
 
 TEST_CASE("conlose")
-{
+{	
+	int i = 0;
 	// необходимый код для выполнение консольных команд 
-	/*
-		std::ostringstream ostream;
-		Operator(ostream , tree );
-	*/
-	REQUIRE( 0 == 0 );
+	//
+	//	tree_t tree;
+	//	std::ostringstream ostream;
+	//	Operator(ostream , tree );
+	//
+	REQUIRE( i == 0 );
 }
 
 TEST_CASE("insert_and_print") {
