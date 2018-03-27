@@ -1,5 +1,6 @@
-#include <iostream>
 #include <sstream>
+#include<iostream>
+#include<string>
 
 class tree_t
 {
