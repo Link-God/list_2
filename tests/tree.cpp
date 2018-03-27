@@ -8,14 +8,8 @@ TEST_CASE("creating tree")
 	REQUIRE( tree.root() == nullptr );
 }
 
-	// необходимый код для выполнение консольных команд 
-	//
-	//	tree_t tree;
-	//	std::ostringstream ostream;
-	//	Operator(ostream , tree );
-	//
-
-TEST_CASE("insert_and_print") {
+TEST_CASE("insert_and_print") 
+{
 	tree_t  tree;
 	tree.insert(2);
 	tree.insert(1);
@@ -32,7 +26,7 @@ TEST_CASE("insert_and_print") {
 }
 
 TEST_CASE("find")
-	{
+{
 	tree_t tree;
 	tree.insert(2);
 	tree.insert(1);
