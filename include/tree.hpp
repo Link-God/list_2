@@ -16,14 +16,16 @@ public:
 	{
 		root_= nullptr;
 	}
-	tree_t(tree_t const & other)
-	{
-		root_ = other.root_;
+	void del(node_t * node)
+	{		
+			if (node->left) del(node->left);
+			if (node->right) del(node->right);
+			delete node;
 	}
-	
 	~tree_t()
 	{
-		// delete root
+			del(root_);
+			//root_ = nullptr;
 	}
 	void insert(int value)
 	{
@@ -88,8 +90,66 @@ public:
 			return false;
 		}
 	}
-	void print(std::ostream & stream) const
+	
+	node_t * root()
 	{
-		
+		return  root_;
+	}
+	void print(std::ostream & stream ,  node_t * node , size_t i) const
+	{
+		if (node->right) {
+			i++;
+			print(stream ,node->right, i);
+			i--;
+		}
+		for (size_t k = 0; k < i; k++) {
+			stream << "--";
+		}
+			stream << node->value << std::endl;
+		if (node->left) {
+			i++;
+			print(stream ,node->left, i);
+			i--;
+		}
 	}
 };
+
+bool read(char & op, int & value , bool & fail)
+{
+	
+	std::string line;
+	getline(std::cin, line);
+	std::istringstream stream(line);
+	if (stream >> op) {
+		if ( (op == '+' && stream >> value) || (op == '?' && stream >> value)) {
+			return true;
+		}
+		else if (op == '=' ) {
+			return true;
+		}
+		else if(op == 'q') {
+			return false;
+		}
+	}
+	fail = true;
+	return false;
+
+}
+void Operator(std ::ostream &stream , tree_t & tree)
+{
+	
+	char op;
+	int value;
+	bool fail=false;
+	while (read(op, value, fail)) {
+		if (op == '=') {
+			tree.print(stream, tree.root(), 1);
+			//std::cout << stream.str();
+		}
+		else {
+			if (op == '+') tree.insert(value);
+			if (op == '?') tree.find(value);
+		}
+	}
+	if (fail) std::cerr << "fail";
+}
