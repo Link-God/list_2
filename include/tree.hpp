@@ -19,7 +19,7 @@ public:
 	}
 	void del(node_t * node)
 	{	
-		if (root_ != NUll) {
+		if (root_ != nullptr) {
 			if (node->left) del (node->left);
 			if (node->right) del (node->right);
 		}
