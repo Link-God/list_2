@@ -18,10 +18,12 @@ public:
 		root_= nullptr;
 	}
 	void del(node_t * node)
-	{		
-			if (node->left) del(node->left);
-			if (node->right) del(node->right);
-			delete node;
+	{	
+		if ( !(node) ) {
+			if (node->left) del (node->left);
+			if (node->right) del (node->right);
+		}
+		delete node;
 	}
 	~tree_t()
 	{
