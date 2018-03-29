@@ -105,6 +105,33 @@ public:
 			i--;
 		}
 	}
+	
+	void no_consol_Operator(char op, std::ostringstream &stream, int value = 0)
+	{
+		if (op != '=')
+		{
+			switch (op) {
+			case '+': {
+				insert(value);
+				break;
+			}
+			case '?': {
+				if (find(value)) {
+					stream << "true";
+				}
+				else stream << "false";
+				break;
+			}
+			default: {
+				if (op != 'q' ) throw std::invalid_argument("Fail");
+				break;
+			}
+			}
+		}
+		else {
+			print(stream, root_);
+		}
+	}
 };
 
 bool read(char & op, int & value , bool & fail)
@@ -136,7 +163,7 @@ void Operator(std ::ostringstream &stream , tree_t & tree)
 	bool fail=false;
 	while (read(op, value, fail)) {
 		if (op == '=') {
-			tree.print(stream, tree.root(), 1);
+			tree.print(stream, tree.root());
 			std::cout << stream.str();
 		}
 		else {
