@@ -34,15 +34,17 @@ TEST_CASE("No_console")
 	tree.no_consol_Operator('+', 3);
 	
 	std::ostringstream stream;
+	std::ostringstream stream2;
+	std::ostringstream stream3;
 	
 	tree.no_consol_Operator('?', 5, stream);
 	REQUIRE(stream.str() == "false");
 	
-	tree.no_consol_Operator('?', 3, stream);
-	REQUIRE(stream.str() == "true");
+	tree.no_consol_Operator('?', 3, stream2);
+	REQUIRE(stream2.str() == "true");
 	
-	tree.no_consol_Operator('=', 0 , stream);
-	REQUIRE(stream.str() == out);
+	tree.no_consol_Operator('=', 0 , stream3);
+	REQUIRE(stream3.str() == out);
 }
 TEST_CASE("insert_and_print") 
 {
