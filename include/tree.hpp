@@ -106,7 +106,7 @@ public:
 		}
 	}
 	
-	void no_consol_Operator(char op, std::ostringstream &stream, int value = 0)
+	void no_consol_Operator(char op, std::ostream &stream = std::cout , int value = 0)
 	{
 		if (op != '=')
 		{
