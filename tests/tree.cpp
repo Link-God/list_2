@@ -41,7 +41,7 @@ TEST_CASE("No_console")
 	tree.no_consol_Operator('?', 3, stream);
 	REQUIRE(stream.str() == "true");
 	
-	tree.no_consol_Operator('=', NULL , stream);
+	tree.no_consol_Operator('=', 0 , stream);
 	REQUIRE(stream.str() == out);
 }
 TEST_CASE("insert_and_print") 
