@@ -22,8 +22,8 @@ public:
 		if (root_ != nullptr) {
 			if (node->left) del (node->left);
 			if (node->right) del (node->right);
+			delete node;
 		}
-		delete node;
 	}
 	~tree_t()
 	{
@@ -41,23 +41,23 @@ public:
 			root_ = node;
 		}
 		else {
-			node_t * time = root_;
-			while (time != nullptr){
-				if (value >= time->value){
-					if (time->right != nullptr) {
-						time = time->right;
+			node_t * temp = root_;
+			while (temp != nullptr){
+				if (value >= temp->value){
+					if (temp->right != nullptr) {
+						temp = temp->right;
 					}
 					else {
-						time->right = node;
+						temp->right = node;
 						return;
 					}
 				}
 				else{
-					if (time->left != nullptr) {
-						time = time->left;
+					if (temp->left != nullptr) {
+						temp = temp->left;
 					}
 					else {
-						time->left = node;
+						temp->left = node;
 						return;
 					}
 
@@ -67,17 +67,17 @@ public:
 	}
 	bool find(int value) const
 	{
-		node_t * time = root_;
-		while (time != nullptr){
-			if (value == time->value) {
+		node_t * temp = root_;
+		while (temp != nullptr){
+			if (value == temp->value) {
 				return true;
 			}
 			else {
-				if (value >= time->value) {
-					time = time->right;
+				if (value >= temp->value) {
+					temp = temp->right;
 				}
 				else {
-					time = time->left;
+					temp = temp->left;
 				}
 			}
 		}
