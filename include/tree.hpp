@@ -143,12 +143,11 @@ public:
 	
 	tree_t(std::initializer_list<T> keys)
 	{
-		
-		while ( keys.begin() != keys.end() ) {
-			insert ( *(keys.begin() ) );
-			keys.begin()++;
+		size_t size = keys.size();
+		for (size_t i = 0; i < size; i++) {
+			T a = *(keys.begin()+i);
+			insert(a);
 		}
-		insert ( *(keys.end() ) );
 	}
 	
 	bool equal(node_t * lhs, node_t * rhs) const
