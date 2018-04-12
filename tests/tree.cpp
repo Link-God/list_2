@@ -5,7 +5,7 @@
 
 TEST_CASE("creating_tree")
 {
-	tree_t tree;
+	tree_t<int> tree;
 	REQUIRE( tree.root() == nullptr );
 }
 
@@ -23,7 +23,7 @@ TEST_CASE("creating_tree")
 
 TEST_CASE("No_console")
 {
-	tree_t tree;
+	tree_t<int> tree;
 	std::string out {
 		"----3\n"
 		"--2\n"
@@ -48,7 +48,7 @@ TEST_CASE("No_console")
 }
 TEST_CASE("insert_and_print") 
 {
-	tree_t tree;
+	tree_t<int> tree;
 	tree.insert(2);
 	tree.insert(1);
 	tree.insert(3);
@@ -65,7 +65,7 @@ TEST_CASE("insert_and_print")
 
 TEST_CASE("find")
 {
-	tree_t tree;
+	tree_t<int> tree;
 	tree.insert(2);
 	tree.insert(1);
 	tree.insert(3);
@@ -77,4 +77,30 @@ TEST_CASE("find")
 	REQUIRE(tree.find(8) == false);
 	REQUIRE(tree.find(9) == true);	
 	REQUIRE(tree.find(7) == true);
+}
+
+TEST_CASE("equal")
+{
+	tree_t<int> tree1;
+	tree_t<int> tree2 {2 , 1 , 3 , 6 , 9 , 7 };
+	tree1.insert(2);
+	tree1.insert(1);
+	tree1.insert(3);
+	tree1.insert(6);
+	tree1.insert(9);
+	tree1.insert(7);
+	
+	
+	REQUIRE(tree1 == tree2);
+}
+
+TEST_CASE("remove")
+{
+	
+	tree_t<int> tree {2 , 1 , 3 , 6 , 9 , 7 };
+	bool one = tree.remove(1);
+	bool two = tree.remove(10);
+	
+	REQUIRE(one);
+	REQUIRE(!two);
 }
