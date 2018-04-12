@@ -89,9 +89,7 @@ TEST_CASE("equal")
 	tree1.insert(6);
 	tree1.insert(9);
 	tree1.insert(7);
-	
-	
-	REQUIRE(tree1.operator==(tree2));
+	REQUIRE(tree1==tree2);
 }
 
 TEST_CASE("remove")
