@@ -212,6 +212,7 @@ public:
 				*link = temp_left_of_right;
 			}
 		}
+		delete temp;
 		return true;
 	}
 };
