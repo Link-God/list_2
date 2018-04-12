@@ -150,7 +150,7 @@ public:
 		insert ( *(keys.end() ) );
 	}
 	
-	bool equal(node_t * lhs, node_t * rhs)
+	bool equal(node_t * lhs, node_t * rhs) const
 	{
 		if (!lhs && !rhs) {
 			return true;
