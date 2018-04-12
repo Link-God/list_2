@@ -165,7 +165,7 @@ public:
 
 	auto operator==(tree_t const & other) const
 	{
-		equal(root_, other.root());
+		equal(this.root, other.root());
 	}
 	bool remove(T key)
 	{
