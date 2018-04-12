@@ -92,7 +92,7 @@ public:
 		return false;
 	}
 	
-	node_t * root()
+	node_t * root() const
 	{
 		return  root_;
 	}
@@ -143,6 +143,7 @@ public:
 	
 	tree_t(std::initializer_list<T> keys)
 	{
+		
 		while ( keys.begin() != keys.end() ) {
 			insert ( *(keys.begin() ) );
 			keys.begin()++;
@@ -163,9 +164,9 @@ public:
 		}
 	}
 
-	bool operator==(tree_t const & other) const
+	auto operator==(tree_t const & other) const
 	{
-		equal(this.root, other.root());
+		return(equal(root_, other.root()));
 	}
 	bool remove(T key)
 	{
