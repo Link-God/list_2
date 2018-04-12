@@ -171,10 +171,10 @@ public:
 			if (temp == nullptr){
 				return false;
 			}
-			else if (item == (T **)temp->value){
+			else if (key == (T **)temp->value){
 				break;
 			}
-			else if (item > (T **)temp->value){
+			else if (key > (T **)temp->value){
 				link = &temp->right;
 				temp = temp->right;
 			}
