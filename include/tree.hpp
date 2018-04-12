@@ -239,7 +239,7 @@ bool read(char & op, T & value , bool & fail)
 }
 
 template <typename T>
-void Operator(std ::ostringstream &stream , tree_t<T> & tree_t)
+void Operator(std ::ostringstream &stream , tree_t<T> & tree)
 {
 	
 	char op;
