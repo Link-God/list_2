@@ -54,12 +54,18 @@ public:
 						return;
 					}
 				}
-				else{
-					if (temp->left != nullptr) {
-						temp = temp->left;
+				else {
+					if (value < temp->value){
+						if (temp->left != nullptr) {
+							temp = temp->left;
+						}
+						else {
+							temp->left = node;
+							return;
+						}
 					}
-					else {
-						temp->left = node;
+					else
+					{
 						return;
 					}
 
