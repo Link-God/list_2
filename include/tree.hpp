@@ -2,13 +2,14 @@
 #include<iostream>
 #include<string>
 
+template <typename T>
 class tree_t
 {
 private:
 	struct node_t {
 		node_t * left;
 		node_t * right;
-		int value;
+		T value;
 	};
 private:
 	node_t * root_;
@@ -30,7 +31,8 @@ public:
 			del(root_);
 			//root_ = nullptr;
 	}
-	void insert(int value)
+	
+	void insert(T value)
 	{
 		node_t * node = new node_t;
 		node->value = value;
@@ -43,7 +45,7 @@ public:
 		else {
 			node_t * temp = root_;
 			while (temp != nullptr){
-				if (value >= temp->value){
+				if (value > temp->value){
 					if (temp->right != nullptr) {
 						temp = temp->right;
 					}
@@ -65,7 +67,7 @@ public:
 			}
 		}
 	}
-	bool find(int value) const
+	bool find(T value) const
 	{
 		node_t * temp = root_;
 		while (temp != nullptr){
@@ -73,7 +75,7 @@ public:
 				return true;
 			}
 			else {
-				if (value >= temp->value) {
+				if (value > temp->value) {
 					temp = temp->right;
 				}
 				else {
@@ -106,7 +108,7 @@ public:
 		}
 	}
 	
-	void no_consol_Operator(char op,  int value = 0 , std::ostream &stream = std::cout )
+	void no_consol_Operator(char op,  T value = 0 , std::ostream &stream = std::cout )
 	{
 		if (op != '=')
 		{
@@ -132,9 +134,83 @@ public:
 			print(stream, root_);
 		}
 	}
+	
+	tree_t(std::initializer_list<T> keys)
+	{
+		while ( keys.begin() != keys.end() ) {
+			insert ( *(keys.begin() ) );
+			keys.begin()++;
+		}
+		insert ( *(keys.end() ) );
+	}
+	
+	bool equal(node_t * lhs, node_t * rhs)
+	{
+		if (!lhs && !rhs) {
+			return true;
+		}
+		else if (lhs && rhs && lhs->value == rhs->value) {
+			return equal(lhs->left, rhs->left) && equal(lhs->right, rhs->right);
+		}
+		else {
+			return false;
+		}
+	}
+
+	auto operator==(tree_t const & other) const
+	{
+		equal(root_, other.root());
+	}
+	bool remove(T key)
+	{
+		node_t ** link, *temp;
+		link = &root_;
+		temp = root_;
+		for (;;)
+		{
+			if (temp == nullptr){
+				return false;
+			}
+			else if (item == (T **)temp->value){
+				break;
+			}
+			else if (item > (T **)temp->value){
+				link = &temp->right;
+				temp = temp->right;
+			}
+			else{
+				link = &temp->left;
+				temp = temp->left;
+			}
+		}
+
+		if (temp->right == nullptr) {
+			*link = temp->left;
+		}
+		else{
+			node_t * temp_right = temp->right;
+			if (temp_right->left == nullptr){
+				temp_right->left = temp->left;
+				*link = temp_right;
+			}
+			else{
+				node_t * temp_left_of_right = temp_right->left;
+				while (temp_left_of_right->left != nullptr){
+					temp_right = temp_left_of_right;
+					temp_left_of_right = temp_right->left;
+				}
+				temp_right->left = temp_left_of_right->right;
+				temp_left_of_right->left = temp->left;
+				temp_left_of_right->right = temp->right;
+				*link = temp_left_of_right;
+			}
+		}
+		return true;
+	}
 };
 
-bool read(char & op, int & value , bool & fail)
+template <typename T>
+bool read(char & op, T & value , bool & fail)
 {
 	
 	std::string line;
@@ -155,11 +231,13 @@ bool read(char & op, int & value , bool & fail)
 	return false;
 
 }
-void Operator(std ::ostringstream &stream , tree_t & tree)
+
+template <typename T>
+void Operator(std ::ostringstream &stream , tree_t<T> & tree_t)
 {
 	
 	char op;
-	int value;
+	T value;
 	bool fail=false;
 	while (read(op, value, fail)) {
 		if (op == '=') {
