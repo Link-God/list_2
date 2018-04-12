@@ -163,7 +163,7 @@ public:
 		}
 	}
 
-	auto operator==(tree_t const & other) const
+	bool operator==(tree_t const & other) const
 	{
 		equal(this.root, other.root());
 	}
