@@ -38,48 +38,30 @@ public:
 
 	queue_t(queue_t<T> const & other)
 	{
-		node_t * temp = new node_t;
-		temp = other.head();
-		node_t * temp2 = new node_t;
-		temp2 = head_;
-		while (temp != other.tail()) {
-			temp2->value = temp->value;
-			temp2->next = nullptr;
-			temp2 = temp2->next;
-			temp = temp->next;
+		
+		node_t * node = new node_t;
+		node = other.head_;
+		
+		while (node) {
+			node_t * temp = new node_t;
+			temp->value = node->value;
+			temp->next = nullptr;
+			if (head_==nullptr) {
+				head_ = temp;
+			}
+			tail_ = temp;
+			node = node->next;
 		}
-		temp2->value = temp->value;
-		temp2->next = nullptr;
-		tail_ = temp2;
-		delete temp; delete temp2;
+
 	}
 	queue_t<T> & operator =(queue_t<T> const & other)
 	{
-
-		if (this != &other) {
-			if (head_ != nullptr) {
-				node_t *temp = head_;
-				while (head_) {
-					temp = head_;
-					head_ = head_->next;
-					delete temp;
-				}
-			}
-			node_t * temp = new node_t;
-			temp = other.head();
-			node_t * temp2 = new node_t;
-			temp2 = head_;
-			while (temp != other.tail()) {
-				temp2->value = temp->value;
-				temp2->next = nullptr;
-				temp2 = temp2->next;
-				temp = temp->next;
-			}
-			temp2->value = temp->value;
-			temp2->next = nullptr;
-			tail_ = temp2;
-			delete temp; delete temp2;
+		if (&queue == this) {
+			return *this;
 		}
+		this->~queue_t();
+		queue_t new_queue(queue);
+		this = &new_queue;
 		return *this;
 	}
 	void push(T value)
