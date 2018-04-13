@@ -19,15 +19,18 @@ public:
 	{
 		;
 	}
-	~queue_t()
+	queue_t()
 	{
 		if (head_ != nullptr) {
 			node_t *temp = head_;
-			while (head_)
+			while (head_) {
 				temp = head_;
-			head_ = head_->next;
-			delete temp;
+				head_ = head_->next;
+				delete temp;
+			}
+			delete head_;
 		}
+
 	}
 	void swap(queue_t & queue) {
 		std::swap(queue.head_, head_);
