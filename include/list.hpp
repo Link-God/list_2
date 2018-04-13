@@ -21,9 +21,9 @@ public:
 	}
 	~queue_t()
 	{
-		while (head) {
-			node_t * temp = head;
-			head = head->next;
+		while (head_) {
+			node_t * temp = head_;
+			head_ = head_->next;
 			delete temp;
 		}
 	}
