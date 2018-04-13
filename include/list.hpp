@@ -43,12 +43,12 @@ public:
 		node_t * temp2 = new node_t;
 		temp2 = head_;
 		while (temp != other.tail_) {
-			temp2->value = tepm->value;
+			temp2->value = temp->value;
 			temp2->next = nullptr;
 			temp2 = temp2->next;
-			temp = tepm->next;
+			temp = temp->next;
 		}
-		temp2->value = tepm->value;
+		temp2->value = temp->value;
 		temp2->next = nullptr;
 		tail_ = temp2;
 		delete temp; delete temp2;
@@ -70,12 +70,12 @@ public:
 			node_t * temp2 = new node_t;
 			temp2 = head_;
 			while (temp != other.tail_) {
-				temp2->value = tepm->value;
+				temp2->value = temp->value;
 				temp2->next = nullptr;
 				temp2 = temp2->next;
-				temp = tepm->next;
+				temp = temp->next;
 			}
-			temp2->value = tepm->value;
+			temp2->value = temp->value;
 			temp2->next = nullptr;
 			tail_ = temp2;
 			delete temp; delete temp2;
@@ -99,7 +99,7 @@ public:
 	T pop()
 	{
 		if (head_ != nullptr) {
-			T a = head->value;
+			T a = head_->value;
 			node_t *temp = head_;
 			head_ = head_->next;
 			delete temp;
