@@ -13,9 +13,10 @@ class queue_t
 	node_t * tail_;
 public:
 	queue_t()
+		: head_ (nullptr)
+		, tail_ (nullptr)	
 	{
-		head_ = nullptr;
-		tail_ = nullptr;
+		;
 	}
 	~queue_t()
 	{
@@ -38,19 +39,9 @@ public:
 
 	queue_t(queue_t<T> const & other)
 	{
-		
-		node_t * node = new node_t;
-		node = other.head_;
-		
-		while (node) {
-			node_t * temp = new node_t;
-			temp->value = node->value;
-			temp->next = nullptr;
-			if (head_==nullptr) {
-				head_ = temp;
-			}
-			tail_ = temp;
-			node = node->next;
+		for (auto it = other.head_; it; it = it->next)
+		{
+			push(it->value);
 		}
 
 	}
