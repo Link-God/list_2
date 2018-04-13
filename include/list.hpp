@@ -50,10 +50,9 @@ public:
 	}
 	queue_t<T> & operator =(queue_t<T> const & other)
 	{
-		if (&other == this) {
-			return *this;
-		}
+		if (&other != this) {
 		queue_t(other).swap(*this);
+		}
 	}
 	void push(T value)
 	{
