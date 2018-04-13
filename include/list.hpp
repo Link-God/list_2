@@ -56,11 +56,11 @@ public:
 	}
 	queue_t<T> & operator =(queue_t<T> const & other)
 	{
-		if (&queue == this) {
+		if (&other == this) {
 			return *this;
 		}
 		this->~queue_t();
-		queue_t new_queue(queue);
+		queue_t new_queue(other);
 		this = &new_queue;
 		return *this;
 	}
