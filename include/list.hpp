@@ -39,7 +39,7 @@ public:
 	queue_t(queue_t<T> const & other)
 	{
 		node_t * temp = new node_t;
-		temp = other->head_;
+		temp = other.head();
 		node_t * temp2 = new node_t;
 		temp2 = head_;
 		while (temp != other.tail_) {
@@ -66,7 +66,7 @@ public:
 				}
 			}
 			node_t * temp = new node_t;
-			temp = other->head_;
+			temp = other.head();
 			node_t * temp2 = new node_t;
 			temp2 = head_;
 			while (temp != other.tail_) {
