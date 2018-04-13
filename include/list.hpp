@@ -40,7 +40,7 @@ public:
 		return  tail_;
 	}
 
-	queue_t(queue_t<T> const & other)
+	queue_t(queue_t<T> const & other) : queue_t()
 	{
 		for (auto it = other.head_; it; it = it->next)
 		{
