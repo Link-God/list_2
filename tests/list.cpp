@@ -46,7 +46,7 @@ TEST_CASE("assignment")
 	list.push(1);
 	list.push(2);
 	queue_t<int> list2 = list;
-	int sum = lis2.pop();
+	int sum = list2.pop();
 	sum = sum + list2.pop();
 	REQUIRE( sum == 3 );
 	
