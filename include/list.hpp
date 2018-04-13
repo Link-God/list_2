@@ -42,7 +42,7 @@ public:
 		temp = other.head();
 		node_t * temp2 = new node_t;
 		temp2 = head_;
-		while (temp != other.tail_) {
+		while (temp != other.tail()) {
 			temp2->value = temp->value;
 			temp2->next = nullptr;
 			temp2 = temp2->next;
@@ -69,7 +69,7 @@ public:
 			temp = other.head();
 			node_t * temp2 = new node_t;
 			temp2 = head_;
-			while (temp != other.tail_) {
+			while (temp != other.tail()) {
 				temp2->value = temp->value;
 				temp2->next = nullptr;
 				temp2 = temp2->next;
