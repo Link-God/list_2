@@ -1,6 +1,7 @@
 #include <sstream>
 #include<iostream>
 #include<string>
+#include <utility>
 
 template < typename T >
 class queue_t
@@ -28,6 +29,10 @@ public:
 			delete temp;
 		}
 	}
+	void swap(queue_t & queue) {
+		std::swap(queue.head, head);
+		std::swap(queue.tail, tail);
+	}
 	node_t * head() const
 	{
 		return  head_;
@@ -50,10 +55,7 @@ public:
 		if (&other == this) {
 			return *this;
 		}
-		this->~queue_t();
-		queue_t new_queue(other);
-		this = &new_queue;
-		return *this;
+		queue_t(other).swap(*this);
 	}
 	void push(T value)
 	{
