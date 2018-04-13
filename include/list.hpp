@@ -98,8 +98,9 @@ public:
 	}
 	T pop()
 	{
+		T a ;
 		if (head_ != nullptr) {
-			T a = head_->value;
+			a = head_->value;
 			node_t *temp = head_;
 			head_ = head_->next;
 			delete temp;
