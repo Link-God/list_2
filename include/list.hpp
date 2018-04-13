@@ -97,9 +97,10 @@ public:
 			tail_ = node;
 		}
 	}
-	void pop()
+	T pop()
 	{
 		if (head_ != nullptr) {
+			T a = head->value;
 			node_t *temp = head_;
 			head_ = head_->next;
 			delete temp;
@@ -107,6 +108,7 @@ public:
 		else {
 			throw std::out_of_range("Invalid range");
 		}
+		return a ;
 	}
 
 };
