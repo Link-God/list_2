@@ -30,8 +30,8 @@ public:
 		}
 	}
 	void swap(queue_t & queue) {
-		std::swap(queue.head, head);
-		std::swap(queue.tail, tail);
+		std::swap(queue.head_, head_);
+		std::swap(queue.tail_, tail_);
 	}
 	node_t * head() const
 	{
