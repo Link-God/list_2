@@ -53,7 +53,7 @@ TEST_CASE("assignment")
 }
 TEST_CASE("string")
 {
-	queue_t<string> list;
+	queue_t<std::string> list;
 	list.push("Hello");
 	REQUIRE( list.pop() == "Hello" );
 	
