@@ -21,14 +21,10 @@ public:
 	}
 	~queue_t()
 	{
-		if (head_ != nullptr) {
-			node_t *temp = head_;
-			while (head_!= tail_){
-				temp = head_;
-				head_ = head_->next;
-				delete temp;
-			}
-			delete head_;
+		while (head) {
+			node_t * temp = head;
+			head = head->next;
+			delete temp;
 		}
 	}
 	void swap(queue_t & queue) {
