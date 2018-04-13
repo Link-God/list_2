@@ -19,7 +19,7 @@ public:
 	{
 		;
 	}
-	queue_t()
+	~queue_t()
 	{
 		if (head_ != nullptr) {
 			node_t *temp = head_;
